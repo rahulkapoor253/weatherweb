@@ -4,10 +4,13 @@ const hbs = require('hbs');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
-const port = 3000;
+//local run
+//const port = 3000;
+const port = process.env.PORT || 3000;
+
 console.log(path.join(__dirname, '../public'));
 const app = express();
-const partialPath = path.join(__dirname, './views/partials');
+const partialPath = path.join(__dirname, '../views/partials');
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(partialPath);//let hbs know about the partials
@@ -68,5 +71,6 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log("listening on port " + port);
+    console.log("listening server on port " + port);
 });
+
