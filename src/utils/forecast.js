@@ -11,7 +11,10 @@ const forecast = (latitude, longitude, callback) => {
         }
         else {
             //when we get the actual resp
-            callback(undefined, body.location.name + ',' + body.location.country + ' : temperature is ' + body.current.temperature + ' and weather is ' + body.current.weather_descriptions);
+            callback(undefined, {
+                weatherInfo : body.location.name + ',' + body.location.country + ' : temperature is ' + body.current.temperature + ' and weather is ' + body.current.weather_descriptions,
+                weatherIcon : body.current.weather_icons[0]
+            });
         }
     });
 

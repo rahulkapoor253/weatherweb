@@ -50,13 +50,14 @@ app.get('/weather', (req, res) => {
             return res.send({ error });
         }
         //call forecast with long lat
-        forecast(latitude, longitude, (error, forecastResponse) => {
+        forecast(latitude, longitude, (error, {weatherInfo, weatherIcon}) => {
             if(error) {
                 return res.send({ error });
             }
             res.send({
-                forecast : forecastResponse,
-                location : location
+                forecast : weatherInfo,
+                location : location,
+                weathericon : weatherIcon
             });
         });
     });
